@@ -1,0 +1,9 @@
+title=Title
+year=Year
+movies=Movies
+add=Add
+cancel=Cancel
+edit=Edit
+added=Successfully added {0} ({1,number,#})
+updated={0} ({1,number,#}) successfully updated to {2} ({3,number,#})
+deleted={0} ({1,number,#}) deleted

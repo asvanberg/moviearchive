@@ -1,0 +1,5 @@
+@(id: Long, movieForm: Form[Movie])
+
+@main("Movies") {
+    @movies.fragments.form(routes.Movies.update(id), movieForm, Messages("edit"))
+}

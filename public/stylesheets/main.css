@@ -1,0 +1,12 @@
+body {
+    padding-top: 20px;
+}
+.alert {
+    padding: 8px;
+}
+.alert[data-dismiss] {
+    cursor: pointer;
+}
+.alert[data-dismiss]:hover {
+    opacity: 0.3;
+}

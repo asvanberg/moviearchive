@@ -1,0 +1,5 @@
+@(field: Field, args: (Symbol, Any)*)(implicit fieldConstructor: helper.FieldConstructor, lang: Lang)
+
+@helper.input(field, args:_*) { (id, name, value, args) =>
+    <input class="form-control" id="@id" name="@name" value="@value" @toHtmlArgs(args) >
+}

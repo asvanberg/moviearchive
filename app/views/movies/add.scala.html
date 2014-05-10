@@ -1,0 +1,5 @@
+@(movieForm: Form[Movie])
+
+@main("Movies") {
+    @movies.fragments.form(routes.Movies.create, movieForm, Messages("add"))
+}
