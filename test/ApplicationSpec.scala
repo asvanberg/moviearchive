@@ -19,10 +19,11 @@ class ApplicationSpec extends Specification {
       route(FakeRequest(GET, "/boum")) must beNone
     }
 
-    "render the index page" in new WithApplication{
+    "redirect to the movie list page" in new WithApplication{
       val home = route(FakeRequest(GET, "/")).get
 
       status(home) must equalTo(SEE_OTHER)
+      redirectLocation(home).get must equalTo(controllers.routes.Movies.list.url)
     }
   }
 }
