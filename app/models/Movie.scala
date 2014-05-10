@@ -15,6 +15,8 @@ object Movie {
     case id ~ title ~ year => Movie(Id(id), title, year)
   }
 
+  def apply(title: String, year: Int): Movie = apply(NotAssigned, title, year)
+
   def create(movie: Movie): Movie = DB.withConnection { implicit connection =>
     val id = SQL("INSERT INTO movie (title, year) VALUES ({title}, {year})")
       .on('title -> movie.title, 'year -> movie.year)
