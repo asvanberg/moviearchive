@@ -3,6 +3,8 @@ package models
 import anorm._
 import anorm.SqlParser._
 import play.api.db.DB
+import play.api.libs.json._
+import play.api.libs.functional.syntax._
 import play.api.Play.current
 
 case class Actor(id: Pk[Long], firstName: String, lastName: String) {
@@ -13,6 +15,12 @@ object Actor {
   private val actorParser = long("id") ~ str("firstName") ~ str("lastName") map {
     case id ~ firstName ~ lastName => Actor(Id(id), firstName, lastName)
   }
+
+  implicit val jsonWriter = (
+    (__ \ "id").write[Pk[Long]] and
+      (__ \ "firstName").write[String] and
+      (__ \ "lastName").write[String]
+    )(unlift(Actor.unapply))
 
   def apply(firstName: String, lastName: String): Actor = apply(NotAssigned, firstName, lastName)
 
