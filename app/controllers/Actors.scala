@@ -15,12 +15,10 @@ object Actors extends Controller {
   )(Actor.apply)(Actor.unapply))
 
   def list = Action { implicit request =>
-    Ok(views.html.actors.index())
-  }
-
-  def listJson = Action {
-    import models.Actor.jsonWriter
-    Ok(toJson(Actor.list))
+    render {
+      case Accepts.Json() => Ok(toJson(Actor.list))
+      case Accepts.Html() => Ok(views.html.actors.index())
+    }
   }
 
   def create = Action {
