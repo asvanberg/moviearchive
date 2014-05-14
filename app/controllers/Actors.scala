@@ -14,12 +14,17 @@ object Actors extends Controller {
     "lastName" -> nonEmptyText
   )(Actor.apply)(Actor.unapply))
 
-  def list = Action {
+  def list = Action { implicit request =>
     Ok(views.html.actors.index())
   }
 
   def listJson = Action {
     import models.Actor.jsonWriter
     Ok(toJson(Actor.list))
+  }
+
+  def create = Action {
+    Actor.create(Actor("Arnold", "Schwarzenegger"))
+    Redirect(routes.Actors.list)
   }
 }

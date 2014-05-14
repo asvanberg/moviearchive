@@ -1,3 +1,10 @@
+@()(implicit requestHeader: RequestHeader)
+
 @main("Actors") {
 
+    @helper.javascriptRouter("routes")(routes.javascript.Actors.listJson)
+
+    <script src='@routes.Assets.at("javascripts/actors.js")' type="text/javascript"></script>
+
+    <ul id="actorList"></ul>
 }
